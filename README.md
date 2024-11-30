@@ -112,7 +112,7 @@ SPI is configured on DMA mode to drive ILI9341 signal, the configure is as below
 
 ![SPI_ILI9341](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/ILI9341_Config.png)
 
-Sample script ILI9341
+:pen: **Sample script ILI9341**
 
 ```bash
 ILI9341_Init();
@@ -129,6 +129,29 @@ ILI9341_FillScreen(WHITE);
 ```
 
 # ESP32 Script and web page full stack
+
+This script is for an ESP32-based web server that handles real-time environmental data collection and visualization. It uses UART communication to receive sensor data (temperature, humidity, and soil moisture) from two UART ports, processes the data, and serves it on a web interface. Here's a breakdown of the key features:
+
+:pushpin: **Wi-Fi Setup**: The ESP32 connects to a Wi-Fi network using predefined SSID and password.
+
+:pushpin: **UART Communication:**
+
+The script reads environmental data from two UART devices (UART_0 and UART_1), extracting temperature, humidity, and soil moisture values.
+It also reads detection data for plant health (e.g., early blight, mold leaf, tomato health) and logs this data.
+Data Parsing: The incoming data from UART is parsed and stored in arrays. The parsed values (temperature, humidity, soil moisture, and plant health data) are logged.
+
+:pushpin: **Web Server:**
+
+A simple HTTP server is set up to serve a webpage that visualizes the collected data.
+The webpage includes line charts to display real-time temperature, humidity, and soil moisture, as well as pie charts and a switch to toggle the status.
+Data is fetched every second and dynamically updates the charts on the page.
+Real-Time Updates: The ESP32 continuously updates the webpage with the latest environmental and plant health data, which is fetched via a /data endpoint.
+
+**Web Interface**: The HTML page includes JavaScript (with Chart.js) to create interactive charts for visualizing data and a switch button to interact with the system.
+
+**Task Management**: The script uses FreeRTOS tasks for UART data reception and logging, ensuring that the ESP32 can handle multiple operations concurrently without blocking.
+
+This system could be used in IoT applications for monitoring plant health, environmental conditions, or any other system requiring real-time data collection and visualization
 
 
 
