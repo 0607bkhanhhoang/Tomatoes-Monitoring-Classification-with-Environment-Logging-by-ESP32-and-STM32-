@@ -34,8 +34,8 @@ Firstly, to code on STM32, IOC file must be configured as the figure below.
 
 ## Clock Configuration and TIMER selection
 I use Timer 1, due to its extension in bits ( 16 bits) with another timer. The value of the timer is calculated is below and the reason to choose this timer is that I need a milis delay function for running DHT11. 
-
-With the value of Prescaler is 64 - 1, counter period is 0xffff-1
+With the value of Prescaler is 64 - 1, counter period is 0xffff-1.
+![Timer_configi](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/Timer_config.png)
 
 
 
