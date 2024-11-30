@@ -49,7 +49,7 @@ void delay (uint16_t time)
 ```
 ## ADC Configuration to read data from soil 
 ADC on STM32 is 11 bits resolution, this is the configuration and function to read configure on ADC.
-<p align="left">
+<p align="right">
   <img src="https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/adc_config.png" alt="Logo" width="300"/>
 </p>
 
