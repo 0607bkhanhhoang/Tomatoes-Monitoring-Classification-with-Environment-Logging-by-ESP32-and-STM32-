@@ -26,7 +26,7 @@ OpenCV library for draw bounding box
 pip install opencv-python
 ```
 # Main Hardware Diagram
-
+![Hardware Diagram](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/Brief-%20Diagram.png)
 
 
 
