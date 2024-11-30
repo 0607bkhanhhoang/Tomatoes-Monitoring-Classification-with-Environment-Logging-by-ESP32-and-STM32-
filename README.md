@@ -51,7 +51,7 @@ void delay (uint16_t time)
 ADC on STM32 is 11 bits resolution, this is the configuration and function to read configure on ADC.
 ![ADC_Configure](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/adc_config.png)
 
-Function to read ADC, R: 1-> 1000, voltage : 3.3V
+:pushpin: Function to read ADC, R: 1-> 1000, voltage : 3.3V
 
 ```bash
 uint8_t readSoil(void)
@@ -70,5 +70,38 @@ uint8_t readSoil(void)
 	return soil;
 }
 ```
+
+## UART Configuration on Interrupt mode 
+For UART, we already have 3 mode on UART (Polling, Interrupt, DMA) but the data is declared on uint8_t, meanwhile, we can send it respectively that ESP32 need an delay for the transmition, but it must have a signal to indicate that the data is sent -> so that i use UART in interrupt mode 
+
+:email: To do this, global interrupt is turn on, that this is the 1st interrupt priority.
+
+![UART_Send](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/UART_Sender.png)
+
+:pen: **Script for UART Sending Data :** For this, I type casting my data from float -> integer value and send to ESP32
+
+Buffer containing Data
+```bash
+/**** Create a buffer for UART****/
+uint8_t UART1_rxBuffer[12] = {2};
+uint8_t index;
+uint8_t character_stop = 5;
+//NULL Character buffer//
+uint8_t TxData[32] = {'\0'};
+uint8_t MSG[32] = {'\0'};
+```
+
+Sending Data in UART IT Mode
+```bash
+    /**** Typecasting Data**********/
+ 	soilvalue = (uint8_t)readValue;
+ 	temp =(uint8_t)Temperature;
+ 	humid = (uint8_t)Humidity;
+ 	/***** UART Transmittion ***********/
+	sprintf(TxData, "%d%d%d\r\n ",temp,humid,soilvalue);
+	HAL_UART_Transmit_IT(&huart1,TxData, sizeof(TxData));
+	HAL_Delay(500);
+```
+
 
 
