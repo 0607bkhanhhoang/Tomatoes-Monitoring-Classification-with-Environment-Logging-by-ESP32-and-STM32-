@@ -516,6 +516,32 @@ def send_to_esp32(data):
         print(f"Error sending data to ESP32: {e}")
 ```
 
+## Setting log output
+```bash
+class StreamToLogger:
+    """
+    Captures the output from terminal and sends it to the logger.
+    """
+    def __init__(self, logger, log_level):
+        self.logger = logger
+        self.log_level = log_level
+
+    def write(self, message):
+        """
+        Captures and logs the message.
+        """
+        if message.strip():  
+            self.logger.log(self.log_level, message.strip())
+
+    def flush(self):
+        """
+        Flush the stream (not needed for this implementation).
+        """
+        pass
+    
+sys.stdout = StreamToLogger(logging.getLogger(), logging.INFO)  
+sys.stderr = StreamToLogger(logging.getLogger(), logging.ERROR)
+```
 ## Process Log File 
 **Processing log file captured from terminal**
 ```bash

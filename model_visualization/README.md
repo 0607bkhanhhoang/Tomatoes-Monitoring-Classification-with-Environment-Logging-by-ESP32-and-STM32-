@@ -38,3 +38,58 @@ The script sends detection counts over the serial link and waits for responses f
 YOLO Detection: The webcam feed is continuously captured and processed by the YOLO model for object detection. The results are logged.
 Counting and Sending: Detection counts (based on specific class IDs) are periodically computed from the log file and sent to the ESP32 via serial communication.
 Real-time Interaction: Detection data is updated regularly, and communication with the ESP32 allows for real-time feedback.
+
+## Function to send to ESP32
+```bash
+def send_to_esp32(data):
+    try:
+        message = f"{data}\n"
+        ser.write(message.encode())
+        print(f"Sent detection data to ESP32: {message}")
+    except Exception as e:
+        print(f"Error sending data to ESP32: {e}")
+```
+
+## Process Log File 
+**Processing log file captured from terminal**
+```bash
+def process_and_send_counts():
+    """
+    Processes the log file to count detections and sends the counts over USB to ESP32.
+    """
+    ser = serial.Serial(port, baudrate, timeout=1)  # Connect to ESP32
+    log_file = "capture.log"
+
+    while True:  
+        try:
+            blight = 0  # early_blight counting value
+            mold = 0    # mold_leaf counting value
+            tomato = 0  # tomato_healthy counting value
+
+            # Read the log file and count detections
+            with open(log_file, "r") as file:
+                for line in file:
+                    if "Class ID: [2.]" in line:
+                        blight += 1
+                    if "Class ID: [1.]" in line:
+                        mold += 1
+                    if "Class ID: [3.]" in line:
+                        tomato += 1
+
+            detection_data = f"early_blight:{blight},mold_leaf:{mold},tomato_healthy:{tomato}"
+
+            send_to_esp32(detection_data)
+
+            if ser.in_waiting > 0:
+                response = ser.readline().decode().strip()
+                print(f"Received from ESP32: {response}")
+
+            time.sleep(1)
+
+        except Exception as e:
+            print(f"Error in USB communication: {e}")
+            break
+
+    ser.close()
+    print("Serial communication ended.")
+```
