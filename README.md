@@ -1,4 +1,4 @@
-# Tomatoes Monitoring and Classification with Environment Logging byE SP32S3 and STM32 
+# Tomatoes Monitoring and Classification with Environment Logging by ESP32S3 and STM32 
 
 Hi Everyone, this is the project from my course on Ho Chi Minh University of Technology as the course is on **EE3103 : Embedded System Programming**. In this project, on abstraction view, this project will measure temperature, humidity,soil moisture and rain drops state from a microcontroller : **STM32F103C8T6**. This MCU will connect to TFT ILI9341 for displaying temperature, humidity, soil moisture and LCD1602 will display Rain drops state and relay state. 
 
