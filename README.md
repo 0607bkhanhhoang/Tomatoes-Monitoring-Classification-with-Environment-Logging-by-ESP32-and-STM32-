@@ -22,6 +22,7 @@ OpenCV library for draw bounding box
 pip install opencv-python
 ```
 :pushpin: STM32CubeIDE : This IDE is used for STM32 Programming https://www.st.com/en/development-tools/stm32cubeide.html 
+
 :pushpin: ESP32- ESPIDF IDE : Use for esp32 https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/index.html
 
 
