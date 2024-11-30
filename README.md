@@ -34,9 +34,38 @@ Firstly, to code on STM32, IOC file must be configured as the figure below.
 
 ## Clock Configuration and TIMER selection
 I use Timer 1, due to its extension in bits ( 16 bits) with another timer. The value of the timer is calculated is below and the reason to choose this timer is that I need a milis delay function for running DHT11. 
-With the value of Prescaler is 64 - 1, counter period is 0xffff-1.
+
+With the value of Prescaler is 64 - 1, counter period is 0xffff-1. The clock source is internal clock
 ![Timer_configi](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/Timer_config.png)
 
+Code for create delay function to use on DHT11 
+```bash
+void delay (uint16_t time)
+{
+	/* change your code here for the delay in microseconds */
+	__HAL_TIM_SET_COUNTER(&htim1, 0);
+	while ((__HAL_TIM_GET_COUNTER(&htim1))<time);
+}
+```
+## ADC Configuration to read data from soil 
+ADC on STM32 is 11 bits resolution, this is the configuration and function to read configure on ADC.
+![ADC_Configure](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/adc_config.png)
+```bash
+uint8_t readSoil(void)
+{
+	uint16_t soil = 0;
+	var = val*4096/3.3;
+	val+=0.1;
+	if (val>=5) val=0;
+	HAL_ADC_Start(&hadc1);
+	HAL_ADC_PollForConversion(&hadc1, 1000);
+	ADC_VAL = HAL_ADC_GetValue(&hadc1);
+	HAL_ADC_Stop(&hadc1);
+	soil = ((3.3*ADC_VAL/4095 - V25)/Avg_Slope)+25;
+	HAL_Delay (100);
 
+	return soil;
+}
+```
 
 
