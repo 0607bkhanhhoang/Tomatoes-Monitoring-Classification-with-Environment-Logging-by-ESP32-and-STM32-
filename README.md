@@ -28,6 +28,21 @@ pip install opencv-python
 # Main Hardware Diagram
 ![Hardware Diagram](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/Brief-%20Diagram.png)
 
+## Schematics
+![Schematics_Diagram](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/PCB_and_Hardware/Schematics.jpg)
+
+## PCB View
+
+:pushpin: Top Layer View by Altium
+![Top_Layer](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/PCB_and_Hardware/Top_Layer_PCB.jpg)
+
+:pushpin: Bottom Layer View by Altium
+![Bottom_layer](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/PCB_and_Hardware/Bottom_Layer_PCB.jpg)
+
+:pushpin: Realistic
+![Real_PCB](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/PCB_and_Hardware/Real_Circuit.jpg)
+
+
 # STM32_Configure And Main Interface
 Firstly, to code on STM32, IOC file must be configured as the figure below. 
 ![IOC_Config](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/IOC_STM32_Config_View.png)
