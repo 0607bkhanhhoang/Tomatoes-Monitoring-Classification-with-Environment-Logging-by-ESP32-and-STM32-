@@ -39,7 +39,7 @@ YOLO Detection: The webcam feed is continuously captured and processed by the YO
 Counting and Sending: Detection counts (based on specific class IDs) are periodically computed from the log file and sent to the ESP32 via serial communication.
 Real-time Interaction: Detection data is updated regularly, and communication with the ESP32 allows for real-time feedback.
 
-## Function to send to ESP32
+### Function to send to ESP32
 ```bash
 def send_to_esp32(data):
     try:
@@ -50,7 +50,7 @@ def send_to_esp32(data):
         print(f"Error sending data to ESP32: {e}")
 ```
 
-## Setting log output
+### Setting log output
 ```bash
 class StreamToLogger:
     """
@@ -77,7 +77,7 @@ sys.stdout = StreamToLogger(logging.getLogger(), logging.INFO)
 sys.stderr = StreamToLogger(logging.getLogger(), logging.ERROR)
 ```
 
-## Process Log File 
+### Process Log File 
 **Processing log file captured from terminal**
 ```bash
 def process_and_send_counts():
@@ -120,4 +120,3 @@ def process_and_send_counts():
     ser.close()
     print("Serial communication ended.")
 ```
-
