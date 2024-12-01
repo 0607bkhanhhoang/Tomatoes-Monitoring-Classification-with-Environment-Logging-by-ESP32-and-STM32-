@@ -47,7 +47,7 @@ pip install opencv-python
 
 :pushpin: Realistic
 
-![Real_PCB](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/PCB_and_Hardware/Real_Circuit.jpg)
+![Real_PCB](https://github.com/0607bkhanhhoang/Tomatoes-Monitoring-Classification-with-Environment-Logging-by-ESP32-and-STM32-/blob/main/PCB_and_Hardware/Real_Circuit_2.jpg)
 
 
 # STM32_Configure And Main Interface

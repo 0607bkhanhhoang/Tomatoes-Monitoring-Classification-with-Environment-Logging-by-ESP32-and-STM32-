@@ -130,16 +130,6 @@ def process_and_send_counts():
                     if "Class ID: [3.]" in line:
                         tomato += 1
 
-            # # Send each detection count separately
-            # ser.write(f"early_blight:{blight}\n".encode())
-            # print(f"Sent to ESP32: early_blight:{blight}")
-
-            # ser.write(f"mold_leaf:{mold}\n".encode())
-            # print(f"Sent to ESP32: mold_leaf:{mold}")
-
-            # ser.write(f"tomato_healthy:{tomato}\n".encode())
-            # print(f"Sent to ESP32: tomato_healthy:{tomato}")
-
             detection_data = f"early_blight:{blight},mold_leaf:{mold},tomato_healthy:{tomato}"
 
             send_to_esp32(detection_data)
