@@ -388,6 +388,6 @@ void app_main(void) {
     nvs_flash_init();
     wifi_init_sta();
     server = start_webserver();
-    xTaskCreate(echo_task_uart, "uart_receive_task", 4096, NULL, 10, NULL);
-    xTaskCreate(second_uart_task, "second_uart_receive_task", 4096, NULL, 10, NULL);
+    xTaskCreate(echo_task_uart, "uart_receive_task", 2048, NULL, 10, NULL);
+    xTaskCreate(second_uart_task, "second_uart_receive_task", 2048, NULL, 10, NULL);
 }
